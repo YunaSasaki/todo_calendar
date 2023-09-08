@@ -18,6 +18,8 @@ class Todo extends Model
         'content',
     ];
 
+    protected $dates = ['datetime'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

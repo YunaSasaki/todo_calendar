@@ -27,7 +27,7 @@ class TodoRequest extends FormRequest
             'user_id' => ['required', 'exists:users,id'],
             'title' => ['required', 'string', 'max:20'],
             'datetime' => ['required', 'date_format:"Y/m/d H:i:s"'],
-            'check_flg' => ['required', 'boolean'],
+            'check_flg' => ['in:1', 'nullable'],
             'content' => ['nullable', 'string', 'max:1000'],
         ];
     }

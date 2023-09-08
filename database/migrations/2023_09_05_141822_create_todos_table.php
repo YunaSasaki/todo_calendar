@@ -21,8 +21,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('title');
             $table->dateTime('datetime');
-            $table->boolean('check_flg');
-            $table->text('content')->nullable();;
+            $table->boolean('check_flg')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

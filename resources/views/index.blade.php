@@ -1,17 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Todoリスト一覧
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
-    <div class="py-12">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section class="text-gray-600 body-font">
-                        <div class="container px-5 py-24 mx-auto">
-                            <div class="flex justify-center mb-8">
+                        <div class="container px-5 py-4 mx-auto">
+                            <div class="flex justify-center mb-4">
                                 <button type="button" class="mr-8">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M19 12H6M12 5l-7 7 7 7"/>
@@ -42,111 +42,82 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                                <div class="mb-8 px-4 flex items-center">
-                                    <p class="font-medium text-lg text-green-400">達成率 50%</p>
+                            <div class="lg:w-2/3 w-full mx-auto">
+                                <div class="mb-4 px-4 flex items-center">
+                                    <p class="font-medium text-lg text-green-400">達成率 {{ $achievement }}%</p>
                                     <button class="ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">追加</button>
                                 </div>
-                                <table class="table-auto w-full text-center whitespace-no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl whitespace-nowrap">タイトル</th>
-                                            <th class="px-4 py-3 title-font tracking-wider font-medium bg-gray-100">
-                                                <button class="flex items-center whitespace-nowrap px-4 py-2 text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent">
-                                                    <p class="mr-4">日付</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
-                                                        <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>
-                                                    </svg>
-                                                </button>
-                                            </th>
-                                            <th class="px-4 py-3 title-font tracking-wider font-medium bg-gray-100">
-                                                <select class="text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
-                                                    <option selected>チェック</option>
-                                                    <option>すべて</option>
-                                                    <option>未チェック</option>
-                                                    <option>チェック済</option>
-                                                </select>
-                                            </th>
-                                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-                                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="px-4 py-3">
-                                                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="hidden md:inline-block">2023/09/05</div>
-                                                <div class="md:hidden">09/05</div>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="block">
-                                                    <div class="mt-2">
-                                                        <label class="inline-flex items-center">
-                                                            <input type="checkbox" class="w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <a class="text-indigo-500 inline-flex items-center whitespace-nowrap cursor-pointer">詳細</a>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded whitespace-nowrap">削除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-4 py-3">
-                                                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="hidden md:inline-block">2023/09/06</div>
-                                                <div class="md:hidden">09/06</div>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="block">
-                                                    <div class="mt-2">
-                                                        <label class="inline-flex items-center">
-                                                            <input type="checkbox" class="w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <a class="text-indigo-500 inline-flex items-center whitespace-nowrap cursor-pointer">詳細</a>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded whitespace-nowrap">削除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-4 py-3">
-                                                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <p class="hidden md:inline-block">2023/09/07</p>
-                                                <p class="md:hidden">09/07</p>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="block">
-                                                    <div class="mt-2">
-                                                        <label class="inline-flex items-center">
-                                                            <input type="checkbox" class="w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <a class="text-indigo-500 inline-flex items-center whitespace-nowrap cursor-pointer">詳細</a>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded whitespace-nowrap">削除</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <x-input-error class="mb-4" :messages="$errors->all()"/>
+                                <div id="scroller" class="overflow-auto max-h-96">
+                                    <table class="table-auto w-full text-center whitespace-no-wrap mb-4">
+                                        <thead>
+                                            <tr>
+                                                <th class="sticky top-0 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl whitespace-nowrap">タイトル</th>
+                                                <th class="sticky top-0 px-2 py-3 title-font tracking-wider font-medium bg-gray-100">
+                                                    <form name="sort" method="post" action="{{route('index')}}">
+                                                        @csrf
+                                                        <button type="submit" name="sort" class="flex items-center whitespace-nowrap mx-auto px-4 py-2 text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent" value="@if ($sort === null || $sort === '1') 2 @elseif ($sort !== '1') 1 @endif">
+                                                            <p class="mr-4">日付</p>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
+                                                                <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </th>
+                                                <th class="sticky top-0 px-2 py-3 title-font tracking-wider font-medium bg-gray-100">
+                                                    <select class="text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                                                        <option selected>チェック</option>
+                                                        <option>すべて</option>
+                                                        <option>未チェック</option>
+                                                        <option>チェック済</option>
+                                                    </select>
+                                                </th>
+                                                <th class="sticky top-0 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+                                                <th class="sticky top-0 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($todos as $todo)
+                                                <tr>
+                                                    <td class="px-4 py-3">
+                                                        <form name="title{{ $todo->id }}" method="post" action="{{ route('updateTitle') }}">
+                                                            @csrf
+                                                            <input type="text" name="title" onblur="submitForm(title{{ $todo->id }}, position{{ $todo->id }})" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $todo->title }}" />
+                                                            <input type="hidden" name="id" value="{{ $todo->id }}" />
+                                                            <input type="hidden" name="position" id="position{{ $todo->id }}" value="0" />
+                                                        </form>
+                                                    </td>
+                                                    <td class="px-2 py-3">
+                                                        <div class="hidden md:inline-block">{{ $todo->datetime->format('Y/m/d') }}</div>
+                                                        <div class="md:hidden">{{ $todo->datetime->format('m/d') }}</div>
+                                                    </td>
+                                                    <td class="px-2 py-3">
+                                                        <form name="check{{ $todo->id }}" method="post" action="{{ route('updateCheckFlg') }}">
+                                                            @csrf
+                                                            <div class="block mt-2">
+                                                                <label class="inline-flex items-center">
+                                                                    <input type="hidden" name="check_flg" />
+                                                                    <input name="check_flg" type="checkbox" onchange="submitForm(check{{ $todo->id }}, position{{ $todo->id }})" class="w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" value="1" @if($todo->check_flg === 1) { checked } @endif />
+                                                                </label>
+                                                            </div>
+                                                            <input type="hidden" name="id" value="{{ $todo->id }}" />
+                                                            <input type="hidden" name="position" id="position{{ $todo->id }}" value="0" />
+                                                        </form>
+                                                    </td>
+                                                    <td class="px-4py-3">
+                                                        <a class="text-indigo-500 inline-flex items-center whitespace-nowrap cursor-pointer">詳細</a>
+                                                    </td>
+                                                    <td class="px-4 py-3">
+                                                        <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded whitespace-nowrap">削除</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{-- {{ $todos->links() }} --}}
                             </div>
                         </div>
                     </section>
@@ -155,5 +126,16 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
-    
+    <script>
+        'use strict';
+        let scroller = document.querySelector("#scroller");
+        scroller.scrollTop = {{ $position }};
+
+        function submitForm(formName, positionId) {
+            let position = scroller.scrollTop;
+            positionId.value = position;
+        
+            formName.submit();
+        }
+    </script>
 </x-app-layout>

@@ -27,6 +27,12 @@ Route::middleware('auth')
     ->group(function() {
         Route::get('index', [TodoController::class, 'index'])
             ->name('index');
+        Route::post('index', [TodoController::class, 'index'])
+            ->name('index');
+        Route::post('updateTitle', [TodoController::class, 'updateTitle'])
+            ->name('updateTitle');
+        Route::post('updateCheckFlg', [TodoController::class, 'updateCheckFlg'])
+            ->name('updateCheckFlg');
     });
 
 Route::middleware('auth')->group(function () {
