@@ -67,11 +67,11 @@
                                                     </form>
                                                 </th>
                                                 <th class="sticky top-0 px-2 py-3 title-font tracking-wider font-medium bg-gray-100">
-                                                    <select class="text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
-                                                        <option selected>チェック</option>
-                                                        <option>すべて</option>
-                                                        <option>未チェック</option>
-                                                        <option>チェック済</option>
+                                                    <select onchange="checkFilter(this)" class="text-sm text-gray-900 border border-gray-400 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                                                        <option value="all" selected>チェック</option>
+                                                        <option value="all">すべて</option>
+                                                        <option value="no_check">未チェック</option>
+                                                        <option value="checked">チェック済</option>
                                                     </select>
                                                 </th>
                                                 <th class="sticky top-0 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
@@ -80,7 +80,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach($todos as $todo)
-                                                <tr>
+                                                <tr class="todo_item" id="todo{{ $todo->id }}">
                                                     <td class="px-4 py-3">
                                                         <form name="title{{ $todo->id }}" method="post" action="{{ route('updateTitle') }}">
                                                             @csrf
@@ -99,7 +99,7 @@
                                                             <div class="block mt-2">
                                                                 <label class="inline-flex items-center">
                                                                     <input type="hidden" name="check_flg" />
-                                                                    <input name="check_flg" type="checkbox" onchange="submitForm(check{{ $todo->id }}, position{{ $todo->id }})" class="w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" value="1" @if($todo->check_flg === 1) { checked } @endif />
+                                                                    <input name="check_flg" data-item-id="todo{{ $todo->id }}" type="checkbox" onchange="submitForm(check{{ $todo->id }}, position{{ $todo->id }})" class="check_flg w-6 h-6 text-green-400 border rounded-md focus:ring-0 cursor-pointer" value="1" @if($todo->check_flg === 1) { checked } @endif />
                                                                 </label>
                                                             </div>
                                                             <input type="hidden" name="id" value="{{ $todo->id }}" />
@@ -117,7 +117,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{-- {{ $todos->links() }} --}}
                             </div>
                         </div>
                     </section>
@@ -125,7 +124,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
     <script>
         'use strict';
         let scroller = document.querySelector("#scroller");
@@ -137,5 +135,37 @@
         
             formName.submit();
         }
+
+        function checkFilter(object) {
+            let index = object.selectedIndex;
+            let value = object.options[index].value;
+            
+            let todo_items = document.getElementsByClassName('todo_item');
+            Array.prototype.forEach.call(todo_items, function (todo_item) {
+                todo_item.classList.remove("hidden");
+            });
+
+            if(value === 'no_check') {
+                let checks = document.getElementsByClassName('check_flg');
+                Array.prototype.forEach.call(checks, function (check) {
+                    if(check.checked === true){
+                        let check_flg_on = check.dataset.itemId;
+                        let filteredTodo = document.getElementById(check_flg_on);
+                        filteredTodo.classList.add("hidden");
+                    }
+                });
+            }
+            if(value === 'checked') {
+                let checks = document.getElementsByClassName('check_flg');
+                Array.prototype.forEach.call(checks, function (check) {
+                    if(check.checked === false) {
+                        let check_flg_off = check.dataset.itemId;
+                        let filteredTodo = document.getElementById(check_flg_off);
+                        filteredTodo.classList.add("hidden");
+                    }
+                });
+            }
+        }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
 </x-app-layout>
